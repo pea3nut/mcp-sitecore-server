@@ -87,6 +87,31 @@ on how many tools they can hold, so before you get far, read
 To run the server in a container or from source instead, see
 [Running the server](docs/running.md).
 
+<details>
+<summary>Quick setup with Agent Add (delivery GraphQL)</summary>
+
+To configure only the delivery GraphQL tools, replace the endpoint and API key using the values from [Sitecore setup](docs/sitecore-setup.md#4-set-up-a-graphql-api-key-optional). Run the command and choose your MCP client when [Agent Add](https://github.com/pea3nut/agent-add) prompts you.
+
+```bash
+npx -y agent-add --global --mcp '{
+  "sitecore-mcp": {
+    "command": "npx",
+    "args": [
+      "-y",
+      "@antonytm/mcp-sitecore-server@latest"
+    ],
+    "env": {
+      "GRAPHQL_ENDPOINT": "https://your-sitecore-host/sitecore/api/graph",
+      "GRAPHQL_API_KEY": "{YOUR_API_KEY}",
+      "GRAPHQL_SCHEMAS": "edge",
+      "TOOL_GROUPS": "graphql"
+    }
+  }
+}'
+```
+
+</details>
+
 ## How this compares to the Sitecore Marketer MCP
 
 Sitecore's own [Marketer MCP](https://doc.sitecore.com/sai/en/users/sitecoreai/sitecore-marketer-mcp-server.html) is a hosted service aimed
